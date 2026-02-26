@@ -1,5 +1,5 @@
-import { Restaurant } from "./components/Reasturant"
-import {  } from "./pages/ProductsPage"
+import { Restaurant } from "./components/Restaurant"
+import { RestaurantPage } from "./pages/RestaurantsPage"
 
 
 

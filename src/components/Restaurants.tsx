@@ -1,4 +1,4 @@
-import { Restaurant } from "./Reasturant";
+import { Restaurant } from "./Restaurant";
 
 interface Restaurants{
     names: string[];
