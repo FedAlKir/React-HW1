@@ -8,7 +8,7 @@ interface RestaurantDescribeProps{
     reviews: Review[];
 }
 
-export const RestaurantDescribe: React.FC<RestaurantDescribeProps> = ({id, name, menu, reviews}) => {
+export const RestaurantDescribe: React.FC<RestaurantDescribeProps> = ({name, menu, reviews}) => {
     return (
         <div>
             <h3>{`Name: ${name}`}</h3>
