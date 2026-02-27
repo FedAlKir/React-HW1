@@ -1,10 +1,11 @@
-import type { Dish } from "../types/Dish";
+import type { DishProps } from "../types/Dish";
 import type { Review } from "../types/Review";
+import { Dish } from "./Dish";
 
 interface RestaurantDescribeProps{
     id: string;
     name: string;
-    menu: Dish[];
+    menu: DishProps[];
     reviews: Review[];
 }
 
@@ -16,13 +17,12 @@ export const RestaurantDescribe: React.FC<RestaurantDescribeProps> = ({name, men
                 <h4>Menu</h4>
                 {
                     menu.map((dish) => (
-                        <div>
-                            <h5>{dish.name}</h5>
-                            <h6>Ingridients</h6>
-                            {
-                                dish.ingredients.map((ingridient) => (<p>{ingridient}</p>))
-                            }
-                        </div>
+                        <Dish
+                        key={dish.id}
+                        id={dish.id}
+                        name={dish.name}
+                        price={dish.price}
+                        ingredients={dish.ingredients}/>
                     ))
                 }
             </div>
