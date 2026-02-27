@@ -8,7 +8,7 @@ const data = restaurants;
 export const RestaurantPage = () => {
     const [selectedRestaurant, setSelectedRestaurant] = useState<string | null>(null);
 
-    const restaurant = data.filter((restaurant) => restaurant.name === selectedRestaurant)[0];
+    let restaurant = data.filter((restaurant) => restaurant.name === selectedRestaurant)[0];
 
     return (
         <div>
@@ -17,12 +17,16 @@ export const RestaurantPage = () => {
             onRestaurantSelect={(name: string) => {
                 setSelectedRestaurant(name);
             }}/>
-            <RestaurantDescribe
-            id={restaurant.id}
-            name={restaurant.name}
-            menu={restaurant.menu}
-            reviews={restaurant.reviews}
-            />
+            {
+                restaurant ? 
+                <RestaurantDescribe
+                id={restaurant.id}
+                name={restaurant.name}
+                menu={restaurant.menu}
+                reviews={restaurant.reviews}
+                /> :
+                <p>Choose restaurant</p>
+            }
         </div>
     );
 }

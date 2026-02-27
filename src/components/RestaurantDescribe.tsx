@@ -9,10 +9,6 @@ interface RestaurantDescribeProps{
 }
 
 export const RestaurantDescribe: React.FC<RestaurantDescribeProps> = ({id, name, menu, reviews}) => {
-    if (!id){
-        return null;
-    }
-
     return (
         <div>
             <h3>{`Name: ${name}`}</h3>
