@@ -1,0 +1,13 @@
+.headerLabel{
+    margin-top: 10px;
+    border-bottom-color: rgb(235, 232, 232);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+}
+
+.review{
+    margin-top: 10px;
+    background-color: rgb(245, 239, 239);
+    padding: 10px;
+    border-radius: 10px;
+}

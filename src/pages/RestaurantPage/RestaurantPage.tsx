@@ -1,20 +1,24 @@
 import { restaurants } from "../../materials/mocks/mockRestaurants";
 import { RestaurantDescribe } from "../../components/RestaurantDescribe/RestaurantDescribe";
 import { Restaurants } from "../../components/Restaurants/Restaurants";
-import { useState } from "react";
 import styles from"./styles.module.css"
+import { useParams } from "react-router";
 
 export const RestaurantPage = () => {
-    const [selectedRestaurant, setSelectedRestaurant] = useState<string | null>(null);
+    const { id } = useParams();
 
-    const restaurant = restaurants.find((restaurant) => restaurant.name === selectedRestaurant);
+    const restaurant = restaurants.find((res) => res.id === id);
+
+    if (!restaurant){
+        return (<h1>Restaurant not found</h1>);
+    }
 
     return (
         <div className={styles.container}>
             <Restaurants
             names={restaurants.map((restaurant) => restaurant.name)}
             onRestaurantSelect={(name: string) => {
-                setSelectedRestaurant(name);
+                //setSelectedRestaurant(name);
             }}/>
             {
                 restaurant ? 
