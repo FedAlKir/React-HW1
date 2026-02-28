@@ -1,7 +1,8 @@
-import { restaurants } from "../materials/mocks/mockRestaurants";
-import { RestaurantDescribe } from "../components/RestaurantDescribe";
-import { Restaurants } from "../components/Restaurants";
+import { restaurants } from "../../materials/mocks/mockRestaurants";
+import { RestaurantDescribe } from "../../components/RestaurantDescribe/RestaurantDescribe";
+import { Restaurants } from "../../components/Restaurants/Restaurants";
 import { useState } from "react";
+import styles from"./styles.module.css"
 
 const data = restaurants;
 
@@ -11,7 +12,7 @@ export const RestaurantPage = () => {
     let restaurant = data.filter((restaurant) => restaurant.name === selectedRestaurant)[0];
 
     return (
-        <div>
+        <div className={styles.container}>
             <Restaurants
             names={restaurants.map((restaurant) => restaurant.name)}
             onRestaurantSelect={(name: string) => {
@@ -25,7 +26,7 @@ export const RestaurantPage = () => {
                 menu={restaurant.menu}
                 reviews={restaurant.reviews}
                 /> :
-                <p>Choose restaurant</p>
+                <p className={styles.p}>Choose restaurant</p>
             }
         </div>
     );

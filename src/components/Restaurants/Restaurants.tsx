@@ -1,4 +1,5 @@
-import { Restaurant } from "./Restaurant";
+import { Restaurant } from "../Restaurant/Restaurant";
+import styles from "./styles.module.css"
 
 interface Restaurants{
     names: string[];
@@ -7,10 +8,11 @@ interface Restaurants{
 
 export const Restaurants: React.FC<Restaurants> = ({names, onRestaurantSelect}) => {
     return (
-        <div>
+        <div className={styles.container}>
             {
                 names.map((name) => (
                     <Restaurant
+                    key={name}
                     name={name}
                     onClick={() => {
                         onRestaurantSelect(name);

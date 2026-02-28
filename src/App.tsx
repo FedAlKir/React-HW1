@@ -1,4 +1,4 @@
-import { RestaurantPage } from "./pages/RestaurantsPage"
+import { RestaurantPage } from "./pages/RestaurantsPage/RestaurantsPage"
 
 export const App = ()=>{
     return (
