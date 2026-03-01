@@ -5,7 +5,7 @@
 }
 
 .name{
-    width: 100%;
+    width: 90%;
     border: none;
     border-bottom-color: rgb(202, 233, 243);
     border-bottom-width: 3px;
@@ -13,10 +13,12 @@
 }
 
 .container{
-    width: 80%;
+    width: 64%;
     margin-top: 50px;
+    padding: 20px;
     justify-items: center;
     justify-self: center;
     border-radius: 10px;
     display: flow-root;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }

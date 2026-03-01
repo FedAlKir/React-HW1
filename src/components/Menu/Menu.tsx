@@ -1,14 +1,14 @@
 import type { Restaurant } from "../../types/Restaurant"
 import { Dish } from "../Dish/Dish"
 import styles from "./styles.module.css"
-import { useOutletContext } from "react-router"
+import { Link, useOutletContext } from "react-router"
 
 export const Menu: React.FC = () => {
 
     const { menu } = useOutletContext<Restaurant>();
 
     return (
-        <div>
+        <div className={styles.container}>
             <h3 className={styles.headerLabel}>Menu:</h3>
             {
                 menu.map((dish) => (
@@ -20,6 +20,7 @@ export const Menu: React.FC = () => {
                     ingredients={dish.ingredients}/>
                 ))
             }
+            <Link to="reviews" className={styles.reviewsLink}>Reviews</Link>
         </div>
     )
 }

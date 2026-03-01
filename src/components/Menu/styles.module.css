@@ -1,6 +1,24 @@
+.container {
+    width: 90%;
+}
+
 .headerLabel{
     margin-top: 10px;
     border-bottom-color: rgb(235, 232, 232);
     border-bottom-width: 3px;
     border-bottom-style: solid;
+}
+
+.reviewsLink {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    color: black;
+    text-decoration: none;
+    background-color: rgb(170, 169, 169);
+    border-radius: 10px;
+    justify-self: center;
 }
