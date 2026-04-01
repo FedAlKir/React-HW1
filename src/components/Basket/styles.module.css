@@ -1,0 +1,33 @@
+.container {
+    margin-top: 70px;
+    padding: 20px 40px 20px 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    justify-self: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.totalPriceLabel {
+    margin-top: 60px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.backLink{
+    margin-top: 30px;
+    margin-left: 40px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}

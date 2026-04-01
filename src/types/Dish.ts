@@ -1,6 +1,6 @@
 export interface DishProps {
     id: string,
     name: string,
-    price: Number,
+    price: number,
     ingredients: string[]
 }

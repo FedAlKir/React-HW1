@@ -1,18 +1,25 @@
 import { useState } from "react"
 import type { DishProps } from "../../types/Dish"
 import styles from "./styles.module.css"
+import { addToBasket, deleteFromBasket } from "../../store/slices/basketSlice";
+import { selectDishCountById } from "../../store/selectors/selectDishCountById";
+import { type AppDispatch, store } from "../../store/store";
+import { useDispatch } from "react-redux";
 
-export const Dish: React.FC<DishProps> = ({name, price, ingredients}) => {
-    const [dishCounter, setDishCounter] = useState<number>(0);
+export const Dish: React.FC<DishProps> = ({id, name, price, ingredients}) => {
+    const [dishCounter, setDishCounter] = useState<number>(selectDishCountById(store.getState(), id));
+    const dispatch = useDispatch<AppDispatch>()
 
     const onClickIncrement = () => { 
         if (dishCounter !== 5) {
+            dispatch(addToBasket(id));
             setDishCounter(dishCounter + 1);
         }
     }
     
     const onClickDecrement = () => { 
         if (dishCounter !== 0) {
+            dispatch(deleteFromBasket(id));
             setDishCounter(dishCounter - 1);
         }
     }
