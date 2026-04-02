@@ -1,26 +1,24 @@
-import { useState } from "react"
 import type { DishProps } from "../../types/Dish"
 import styles from "./styles.module.css"
 import { addToBasket, deleteFromBasket } from "../../store/slices/basketSlice";
 import { selectDishCountById } from "../../store/selectors/selectDishCountById";
-import { type AppDispatch, store } from "../../store/store";
-import { useDispatch } from "react-redux";
+import { type AppDispatch, type RootState } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Dish: React.FC<DishProps> = ({id, name, price, ingredients}) => {
-    const [dishCounter, setDishCounter] = useState<number>(selectDishCountById(store.getState(), id));
     const dispatch = useDispatch<AppDispatch>()
 
+    const dishCount = useSelector((store: RootState) => selectDishCountById(store, id));
+
     const onClickIncrement = () => { 
-        if (dishCounter !== 5) {
+        if (dishCount !== 5) {
             dispatch(addToBasket(id));
-            setDishCounter(dishCounter + 1);
         }
     }
     
     const onClickDecrement = () => { 
-        if (dishCounter !== 0) {
+        if (dishCount !== 0) {
             dispatch(deleteFromBasket(id));
-            setDishCounter(dishCounter - 1);
         }
     }
 
@@ -39,7 +37,7 @@ export const Dish: React.FC<DishProps> = ({id, name, price, ingredients}) => {
             </div>
             <div className={styles.counter}>
                 <button onClick={onClickIncrement}>+</button>
-                <p>{dishCounter}</p>
+                <p>{dishCount}</p>
                 <button onClick={onClickDecrement}>-</button>
             </div>
         </div>

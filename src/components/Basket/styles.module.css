@@ -8,15 +8,39 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
+.baskeEmptyLabel {
+    margin-top: 30px;
+    justify-self: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.stateContainer {
+    margin-top: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .totalPriceLabel {
-    margin-top: 60px;
     font-weight: bold;
     font-size: 30px;
 }
 
+.clearBasketButton {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    border: none;
+    background-color: rgb(170, 169, 169);
+    border-radius: 10px;
+}
+
 .backLink{
-    margin-top: 30px;
-    margin-left: 40px;
+    margin-top: 40px;
     height: 40px;
     width: 130px;
     border: none;
