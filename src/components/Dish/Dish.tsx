@@ -21,7 +21,7 @@ export const Dish: React.FC<DishProps> = ({name, price, ingredients}) => {
     for (const ingredient of ingredients){
         ingredientsDescription += ingredient + ", ";
     }
-    ingredientsDescription = ingredientsDescription.substring(0, ingredientsDescription.length - 2);
+    ingredientsDescription = ingredients.join(", ");
 
     return (
         <div className={styles.container}>

@@ -4,11 +4,10 @@ import { Link } from "react-router";
 interface RestaurantProps{
     id: string,
     name: string;
-    onClick: () => void;
 }
 
-export const Restaurant: React.FC<RestaurantProps> = ({id, name, onClick}) => {
+export const Restaurant: React.FC<RestaurantProps> = ({id, name}) => {
     return (
-        <Link to={`/restaurants/${id}`} onClick={onClick} className={styles.button}>{name}</Link>
+        <Link to={`/restaurants/${id}`} className={styles.button}>{name}</Link>
     );
 }
