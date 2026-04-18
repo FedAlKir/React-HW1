@@ -9,11 +9,14 @@ import { ReviewList } from './components/ReviewList/ReviewList'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { Basket } from './components/Basket/Basket'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
-const root = createRoot(document.getElementById('root')!)
+const root = createRoot(document.getElementById('root')!);
 root.render(
     <Provider store={store}>
         <StrictMode>
+            <ToastContainer/>
             <BrowserRouter>
                 <Routes>
                     <Route index element={<WelcomePage />} />
@@ -31,4 +34,4 @@ root.render(
             </BrowserRouter>
         </StrictMode>
     </Provider>
-)
+);

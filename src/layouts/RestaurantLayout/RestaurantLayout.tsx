@@ -1,9 +1,12 @@
 import { useParams } from "react-router"
-import { restaurants } from "../../materials/mocks/mockRestaurants";
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
+import { useSelector } from "react-redux"
+import { selectRestaurants } from "../../store/selectors/selectRestaurants"
 
 export const RestaurantLayout = () => {
+
+    const restaurants = useSelector(selectRestaurants);
 
     const { id } = useParams();
 

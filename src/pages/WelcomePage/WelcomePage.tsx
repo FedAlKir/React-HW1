@@ -9,6 +9,5 @@ export const WelcomePage = () => {
                 <Link to="/restaurants" className={styles.link}>Start</Link>
             </div>
         </div>
-        
     );
-}
+};

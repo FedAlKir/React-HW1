@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { basketReducer } from "./slices/basketSlice";
+import { listenerMiddleware } from "./middlewares/showLoadingStateToast";
+import { rootReducer } from "./rootReducer";
 
 export const store = configureStore({
-    reducer: {
-        basket: basketReducer
-    }
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().prepend(listenerMiddleware.middleware)
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type { RootState } from "./rootReducer";
 export type AppDispatch = typeof store.dispatch;

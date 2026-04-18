@@ -1,7 +1,8 @@
-import { restaurants } from "../../materials/mocks/mockRestaurants";
 import type { DishProps } from "../../types/Dish";
+import type { Restaurant } from "../../types/Restaurant";
 import type { RootState } from "../store";
 import { selectAllDishes } from "./selectAllDishes";
+import { selectRestaurants } from "./selectRestaurants";
 
 interface RestaurantGroup{
     id: string,
@@ -9,44 +10,16 @@ interface RestaurantGroup{
     selectedDishes: DishProps[]
 }
 
-function toDishProps(obj: {
-        id: string;
-        name: string;
-        price: number;
-        ingredients: string[];
-    }) : DishProps{
-    return {
-        id: obj.id,
-        name: obj.name,
-        price: obj.price,
-        ingredients: obj.ingredients
-    };
-}
-
-function toRestaurantGroup(rest: {
-    id: string;
-    name: string;
-    menu: {
-        id: string;
-        name: string;
-        price: number;
-        ingredients: string[];
-    }[];
-    reviews: {
-        id: string;
-        user: string;
-        text: string;
-        rating: number;
-    }[];
-}) : RestaurantGroup{
+function toRestaurantGroup(rest: Restaurant): RestaurantGroup{
     return {
         id: rest.id,
         name: rest.name,
-        selectedDishes: rest.menu.map(d => toDishProps(d))
+        selectedDishes: rest.menu
     };
 }
 
 export const selectDishesAsRestaurantGroups = (state: RootState): RestaurantGroup[] => {
+    const restaurants = selectRestaurants(state);
     const dishesIds = selectAllDishes(state).map(d => d.id);
     const restaurantsGroups: RestaurantGroup[] = restaurants.map(r => toRestaurantGroup(r));
     restaurantsGroups.forEach(r => r.selectedDishes = r.selectedDishes.filter(d => dishesIds.includes(d.id)));
