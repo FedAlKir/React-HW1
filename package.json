@@ -11,13 +11,17 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
+    "axios": "^1.15.2",
     "cors": "^2.8.6",
+    "crypto": "^1.0.1",
     "express-cors": "^0.0.3",
+    "node-crypto": "^1.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.13.1",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "ts-md5": "^2.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

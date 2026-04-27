@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import styles from "./styles.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { type AppDispatch } from "../../store/store";
-import { loadRestaurantsThunk } from "../../api/loadRestaurantsThunk";
+import { loadRestaurantsThunk } from "../../api/loadRestaurants/loadRestaurantsThunk";
 import { selectRestaurants } from "../../store/selectors/selectRestaurants";
 import { selectRestaurantsStatus } from "../../store/selectors/selectRestaurantsStatus";
 import { useEffect } from "react";

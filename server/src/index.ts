@@ -3,7 +3,7 @@ import cors from "cors";
 import { randomUUID } from "node:crypto";
 import { initialRestaurants } from "../assets/mockRestaurants.ts";
 
-const PORT = 3001;
+const PORT = 3000;
 
 type Review = {
   id: string;

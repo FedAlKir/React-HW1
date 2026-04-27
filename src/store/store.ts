@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { listenerMiddleware } from "./middlewares/showLoadingStateToast";
+import { listenerMiddleware } from "./middlewares/showNetworkErrorsToast";
 import { rootReducer } from "./rootReducer";
 
 export const store = configureStore({
