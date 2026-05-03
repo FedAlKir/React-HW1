@@ -1,16 +1,15 @@
 import { useParams } from "react-router"
 import { Outlet } from "react-router"
 import styles from "./styles.module.css"
-import { useSelector } from "react-redux"
-import { selectRestaurants } from "../../store/selectors/selectRestaurants"
+import { useGetRestaurantsQuery } from "../../store/services/restaurant"
 
 export const RestaurantLayout = () => {
 
-    const restaurants = useSelector(selectRestaurants);
+    const { data: restaurants } = useGetRestaurantsQuery();
 
     const { id } = useParams();
 
-    const restaurant = restaurants.find((res) => res.id === id);
+    const restaurant = restaurants?.find((res) => res.id === id);
 
     if (!restaurant){
         return (<h1>Restaurant not found</h1>);
