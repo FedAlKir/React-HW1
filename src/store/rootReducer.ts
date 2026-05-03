@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { basketReducer } from "./slices/basketSlice";
-import { restaurantsSliceReducer } from "./slices/restaurantsSlice";
+import { restaurantApi } from "./services/restaurant";
 
 export const rootReducer = combineReducers({
   basket: basketReducer,
-  restaurants: restaurantsSliceReducer,
+  [restaurantApi.reducerPath]: restaurantApi.reducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

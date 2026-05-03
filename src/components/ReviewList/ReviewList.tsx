@@ -6,12 +6,7 @@ import { useState } from "react"
 import { type Review } from "../../types/Review"
 import penImage from "../../materials/images/pen.png";
 import binImage from "../../materials/images/bin.png";
-import { postNewReviewThunk } from "../../api/postNewReview/postNewReviewThunk"
-import { changeReviewThunk } from "../../api/changeReview/changeReviewThunk"
-import { useDispatch } from "react-redux"
-import type { AppDispatch } from "../../store/store"
-import { addReview, deleteReview, editReview } from "../../store/slices/restaurantsSlice"
-import { deleteReviewThunk } from "../../api/deleteReview/deleteReviewThunk"
+import { useDeleteReviewMutation, usePatchReviewMutation, usePostReviewMutation } from "../../store/services/restaurant"
 
 export const ReviewList: React.FC = () => {
 
@@ -21,7 +16,10 @@ export const ReviewList: React.FC = () => {
     const [reviewText, setReviewText] = useState<string>("");
     const [reviewRating, setReviewRating] = useState<Number>(5);
 
-    const dispatch = useDispatch<AppDispatch>();
+    const [postReview] = usePostReviewMutation();
+    const [patchReview] = usePatchReviewMutation();
+    const [deleteReview] = useDeleteReviewMutation();
+
     const sendReview = async (text: string, rating: Number) => {
         const editedReview: Review = {
             id: editingReview ? editingReview.id : "",
@@ -29,48 +27,15 @@ export const ReviewList: React.FC = () => {
             text: text,
             rating: rating
         }
-        if (!editingReview){
-            const response = await dispatch(postNewReviewThunk({
-                restaurantId: id,
-                review: editedReview
-            }));
-
-            editedReview.id = response.payload.id;
-
-            if (response.meta.requestStatus === "fulfilled"){
-                dispatch(addReview({
-                    restaurantId: id,
-                    review: editedReview
-                }));
-            }
-        }
-        else{
-            const response = await dispatch(changeReviewThunk({
-                restaurantId: id,
-                reviewId: editingReview.id,
-                review: editedReview
-            }));
-
-            if (response.meta.requestStatus === "fulfilled"){
-                dispatch(editReview({
-                    restaurantId: id,
-                    review: editedReview
-                }));
-            }
-        }
+        if (!editingReview) postReview({review: editedReview, restaurantId: id});
+        else patchReview({restaurantId: id, reviewId: editedReview.id, review: editedReview});
 
         setEditingReview(undefined);
         setReviewText("");
         setReviewRating(5);
     };
 
-    const onDeleteReview = async (reviewId: string) => {
-        const response = await dispatch(deleteReviewThunk([id, reviewId]));
-
-        if (response.meta.requestStatus === "fulfilled"){
-            dispatch(deleteReview([id, reviewId]));
-        }
-    }
+    const onDeleteReview = async (reviewId: string) => deleteReview({restaurantId: id, reviewId});
 
     return (
         <div className={styles.container}>

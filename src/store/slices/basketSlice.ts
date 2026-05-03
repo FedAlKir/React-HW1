@@ -22,6 +22,7 @@ export const basketSlice = createSlice({
             }
             const newState: [string, number][] = [];
             dishesMap.forEach((num, id) => newState.push([id, num]));
+            console.log(newState);
             return newState;
         },
         deleteFromBasket: (state, action: PayloadAction<string>) => {
@@ -39,6 +40,7 @@ export const basketSlice = createSlice({
             }
             const newState: [string, number][] = [];
             dishesMap.forEach((num, id) => newState.push([id, num]));
+            console.log(newState);
             return newState;
         },
         clearBasket: () => {

@@ -1,10 +1,7 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
 import { type RootState } from "../store";
 import { toast, type ToastOptions } from "react-toastify";
-import { loadRestaurantsThunk } from "../../api/loadRestaurants/loadRestaurantsThunk";
-import { postNewReviewThunk } from "../../api/postNewReview/postNewReviewThunk";
-import { changeReviewThunk } from "../../api/changeReview/changeReviewThunk";
-import { deleteReviewThunk } from "../../api/deleteReview/deleteReviewThunk";
+import { restaurantApi } from "../services/restaurant";
 
 const BASIC_TOAST_OPTIONS: ToastOptions = {
     position: "top-right",
@@ -14,35 +11,35 @@ const BASIC_TOAST_OPTIONS: ToastOptions = {
 export const listenerMiddleware = createListenerMiddleware<RootState>();
 
 listenerMiddleware.startListening({
-    actionCreator: loadRestaurantsThunk.fulfilled,
+    matcher: restaurantApi.endpoints.getRestaurants.matchFulfilled,
     effect: () => {
         toast.success("Loading success!", BASIC_TOAST_OPTIONS);
     }
 });
 
 listenerMiddleware.startListening({
-    actionCreator: loadRestaurantsThunk.rejected,
+    matcher: restaurantApi.endpoints.getRestaurants.matchRejected,
     effect: () => {
         toast.error("Loading failed", BASIC_TOAST_OPTIONS);
     }
 });
 
 listenerMiddleware.startListening({
-    actionCreator: postNewReviewThunk.rejected,
+    matcher: restaurantApi.endpoints.postReview.matchRejected,
     effect: (action) => {
         toast.error(`${action.error.message}`, BASIC_TOAST_OPTIONS)
     }
 });
 
 listenerMiddleware.startListening({
-    actionCreator: changeReviewThunk.rejected,
+    matcher: restaurantApi.endpoints.patchReview.matchRejected,
     effect: (action) => {
         toast.error(`${action.error.message}`, BASIC_TOAST_OPTIONS)
     }
 });
 
 listenerMiddleware.startListening({
-    actionCreator: deleteReviewThunk.rejected,
+    matcher: restaurantApi.endpoints.deleteReview.matchRejected,
     effect: (action) => {
         toast.error(`${action.error.message}`, BASIC_TOAST_OPTIONS)
     }

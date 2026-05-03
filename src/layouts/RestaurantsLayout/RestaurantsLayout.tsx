@@ -1,35 +1,20 @@
 import { Restaurants } from "../../components/Restaurants/Restaurants";
 import { Outlet } from "react-router";
 import styles from "./styles.module.css"
-import { useDispatch, useSelector } from "react-redux";
-import { type AppDispatch } from "../../store/store";
-import { loadRestaurantsThunk } from "../../api/loadRestaurants/loadRestaurantsThunk";
-import { selectRestaurants } from "../../store/selectors/selectRestaurants";
-import { selectRestaurantsStatus } from "../../store/selectors/selectRestaurantsStatus";
-import { useEffect } from "react";
+import { useGetRestaurantsQuery } from "../../store/services/restaurant";
 
 export const RestaurantsLayout = () => {
 
-    const loadingStatus = useSelector(selectRestaurantsStatus);
+    const {data: restaurants, isLoading, isError} = useGetRestaurantsQuery();
 
-    const dispatch = useDispatch<AppDispatch>();
-    useEffect(() => {
-        if (loadingStatus !== "fulfilled"){
-            dispatch(loadRestaurantsThunk());
-        }
-    }, [dispatch]);
-
-    const restaurants = useSelector(selectRestaurants);
-
-    if (loadingStatus === "idle" || loadingStatus === "pending"){
+    if (isLoading){
         return (
             <div>
                 <p className={styles.loadingStatusLabel}>Loading</p>
             </div>
         );
     }
-
-    else if (loadingStatus === "rejected"){
+    else if (isError || !restaurants){
         return (
             <div>
                 <p className={styles.loadingStatusLabel}>Loading failture</p>
