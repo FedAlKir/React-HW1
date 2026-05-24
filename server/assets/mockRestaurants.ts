@@ -1,4 +1,4 @@
-export const restaurants = [
+export const initialRestaurants = [
   {
     id: "f3a8b2c1-7d4e-5f6a-8b9c-1d2e3f4a5b6c",
     name: "Sakura Sushi",

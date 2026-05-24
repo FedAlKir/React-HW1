@@ -1,0 +1,29 @@
+.container{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    background-color: rgb(245, 239, 239);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.counter{
+    display: flex;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.counter p{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.counter button{
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 15px;
+    background-color: lightskyblue;
+}
